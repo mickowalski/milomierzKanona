@@ -52,7 +52,7 @@ public class CustomerController {
     }
 
     @GetMapping("/confirmDelete")
-    public String confirmDelete(Model model) {
+    public String confirmDelete() {
         return "customers/delete";
     }
 
