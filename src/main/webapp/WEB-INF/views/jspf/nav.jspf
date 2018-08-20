@@ -8,16 +8,16 @@
     <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
             <li class="nav-item">
-                <a class="nav-link" href="/cruise/list">Rejsy</a>
+                <a class="nav-link" href="/cruises">Rejsy</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/customers/list">Klienci</a>
+                <a class="nav-link" href="/customers">Klienci</a>
             </li>
             <li class="nav-item ">
                 <a class="nav-link" href="/customers/ranking">Milomierz</a>
             </li>
             <li class="nav-item ">
-                <a class="nav-link" href="/cruise/list/archive">Archiwum</a>
+                <a class="nav-link" href="/cruises/archive">Archiwum</a>
             </li>
         </ul>
         <button class="btn btn-outline-primary my-2 my-sm-0" onClick="location.href='/user/logout'">Wyloguj

@@ -14,6 +14,6 @@ public interface DetailsRepository extends JpaRepository<Details, Long> {
 //
 //    List<Details> findAllByCruiseId(Long id);
 //
-//    @Query("SELECT COUNT (d) FROM Details d JOIN d.cruise c WHERE c.id=?1")
-//    String detailsCount(Long id);
+@Query("SELECT COUNT (d) FROM Details d JOIN d.cruise c WHERE c.id=?1")
+String detailsCount(Long id);
 }

@@ -61,4 +61,21 @@ public class CustomerController {
         customerRepository.delete(id);
         return "redirect:/customers";
     }
+
+    @GetMapping("/ranking")
+    public String ranking() {
+        return "/ranking/mom";
+    }
+
+    @GetMapping("ranking/details")
+    public String rankingDetails(@RequestParam Long id, Model model) {
+        model.addAttribute("details", customerRepository.CruiseDetailsByUser(id));
+
+        return "ranking/details";
+    }
+
+    @ModelAttribute("mom")
+    public List<Object[]> details() {
+        return customerRepository.findAllForRanking();
+    }
 }

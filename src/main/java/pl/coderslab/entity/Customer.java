@@ -42,6 +42,10 @@ public class Customer {
         mailingList = false;
     }
 
+    public String getFullName() {
+        return firstName + " " + lastName;
+    }
+
     public Long getId() {
         return id;
     }

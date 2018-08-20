@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
@@ -21,23 +21,24 @@
             </tr>
             </thead>
             <tbody>
-            <c:forEach items="${archive}" var="d" varStatus="stat">
+            <c:forEach items="${archive}" var="cruise" varStatus="stat">
                 <tr>
                     <th scope="row"><c:out value="${stat.count}"/></th>
-                    <td><c:out value="${d.name}"/></td>
-                    <td><c:out value="${d.start}"/></td>
-                    <td><c:out value="${d.end}"/></td>
-                    <td><c:out value="${d.yacht}"/></td>
-                    <td><c:out value="${d.yachtDesc}"/></td>
+                    <td><c:out value="${cruise.name}"/></td>
+                    <td><c:out value="${cruise.start}"/></td>
+                    <td><c:out value="${cruise.end}"/></td>
+                    <td><c:out value="${cruise.yacht}"/></td>
+                    <td><c:out value="${cruise.yachtDesc}"/></td>
                     <td>
                         <button class="btn btn-primary"
-                                onClick="javascript:location.href='/cruise/form?id=${d.id}&archive=${d.archive}'">Edytuj
+                                onClick="location.href='/cruises/form?id=${cruise.id}&archive=${cruise.archive}'">Edytuj
                         </button>
                         <button class="btn btn-primary"
-                                onclick="javascript:location.href='confirmDelete?id=${d.id}&name=${d.name}'">Usuń
+                                onclick="location.href='/cruises/confirmDelete?id=${cruise.id}&name=${cruise.name}'">
+                            Usuń
                         </button>
                         <button class="btn btn-primary"
-                                onClick="javascript:location.href='/details/list?cruiseId=${d.id}'">Szczegóły
+                                onClick="location.href='/details/list?cruiseId=${cruise.id}'">Szczegóły
                         </button>
                     </td>
                 </tr>
@@ -45,8 +46,5 @@
             </tbody>
         </table>
 <%@ include file="../jspf/main_js.jspf" %>
-</body>
-</html>
-
 </body>
 </html>

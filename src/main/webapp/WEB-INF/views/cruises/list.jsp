@@ -5,7 +5,7 @@
   Time: 15:42
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
@@ -28,25 +28,26 @@
             </tr>
             </thead>
             <tbody>
-            <c:forEach items="${cruises}" var="d" varStatus="stat">
+            <c:forEach items="${cruises}" var="cruise" varStatus="stat">
                 <tr>
                     <th scope="row"><c:out value="${stat.count}"/></th>
-                    <td><c:out value="${d.name}"/></td>
-                    <td><c:out value="${d.start}"/></td>
-                    <td><c:out value="${d.end}"/></td>
-                    <td><c:out value="${d.yacht}"/></td>
-                    <td><c:out value="${d.yachtDesc}"/></td>
+                    <td><c:out value="${cruise.name}"/></td>
+                    <td><c:out value="${cruise.start}"/></td>
+                    <td><c:out value="${cruise.end}"/></td>
+                    <td><c:out value="${cruise.yacht}"/></td>
+                    <td><c:out value="${cruise.yachtDesc}"/></td>
                     <td>
-                        <button class="btn btn-primary" onClick="javascript:location.href='/cruises/form?id=${d.id}'">Edytuj
+                        <button class="btn btn-primary" onClick="location.href='/cruises/form?id=${cruise.id}'">Edytuj
                         </button>
-                        <button class="btn btn-primary" onClick="javascript:location.href='/cruises/archive?id=${d.id}'">
+                        <button class="btn btn-primary" onClick="location.href='/cruises/toArchive?id=${cruise.id}'">
                             Archiwizuj
                         </button>
                         <button class="btn btn-primary"
-                                onclick="javascript:location.href='/cruises/confirmDelete?id=${d.id}&name=${d.name}'">Usuń
+                                onclick="location.href='/cruises/confirmDelete?id=${cruise.id}&name=${cruise.name}'">
+                            Usuń
                         </button>
                         <button class="btn btn-primary"
-                                onClick="javascript:location.href='/details/list?cruiseId=${d.id}'">Szczegóły
+                                onClick="location.href='/details?cruiseId=${cruise.id}'">Szczegóły
                         </button>
                     </td>
                 </tr>
@@ -54,7 +55,7 @@
             </tbody>
         </table>
         <p>
-            <button class="btn btn-primary" onClick="javascript:location.href='/cruises/form'">Dodaj rejs</button>
+            <button class="btn btn-primary" onClick="location.href='/cruises/form'">Dodaj rejs</button>
         </p>
 <%@ include file="../jspf/main_js.jspf" %>
 </body>

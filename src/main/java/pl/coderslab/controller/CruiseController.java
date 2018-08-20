@@ -25,7 +25,7 @@ public class CruiseController {
     DetailsRepository detailsRepository;
 
     @RequestMapping("")
-    public String unspecified(){
+    public String unspecified() {
         return "cruises/list";
     }
 
@@ -51,7 +51,7 @@ public class CruiseController {
         Cruise toArchive = cruiseRepository.findOne(id);
         toArchive.setArchive(true);
         cruiseRepository.save(toArchive);
-        return "redirect: /cruises";
+        return "redirect: /cruises/archive";
     }
 
     @RequestMapping("/archive")
@@ -67,12 +67,11 @@ public class CruiseController {
     @RequestMapping("/delete")
     public String deleteCruise(@RequestParam Long id) {
         List<Details> details = detailsRepository.findAllDetailsByCruiseId(id);
-        for (Details detail : details) {
-            detailsRepository.delete(detail);
-        }
+        detailsRepository.delete(details);
         cruiseRepository.delete(id);
         return "redirect:/cruises";
     }
+
     @ModelAttribute("cruises")
     public List<Cruise> getAllCruises() {
         return cruiseRepository.findAllNotArchive();

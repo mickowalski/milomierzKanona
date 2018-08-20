@@ -3,7 +3,7 @@
 CRM dla firmy organizującej rejsy żeglarskie, połączona z rankingiem klientów.
 
 Użyte technologie:
-JAVA EE, Spring, Hibernate, MAVEN, Mysql
+JAVA EE, Spring, Hibernate, MAVEN, Mysql, HTML
 
 **Funkcjonalność**
 
