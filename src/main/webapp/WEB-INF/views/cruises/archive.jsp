@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title>Archive</title>
+    <title>Piotrek to pała</title>
     <%@ include file="../jspf/head_config.jspf" %>
 </head>
 <body style="background-color: lightsteelblue">

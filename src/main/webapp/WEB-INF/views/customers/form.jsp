@@ -36,7 +36,7 @@
     </div>
     <div class="form-group">
         <label for="exampleInputPassword1">Kod pocztowy</label>
-        <form:input path="zipCode" class="form-control" id="exampleInputPassword1" placeholder="Kod pocztowy"/>
+        <form:input path="zipCode" cssClass="form-control" id="exampleInputPassword1" placeholder="Kod pocztowy"/>
     </div>
     <div class="form-group">
         <label for="exampleInputEmail1">Miejscowość</label>

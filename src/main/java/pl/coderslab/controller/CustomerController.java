@@ -10,14 +10,22 @@ import pl.coderslab.entity.Customer;
 import pl.coderslab.repository.CustomerRepository;
 
 import javax.validation.Valid;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 @Controller
 @RequestMapping("customers")
 public class CustomerController {
 
-    @Autowired
+    final
     CustomerRepository customerRepository;
+
+    @Autowired
+    public CustomerController(CustomerRepository customerRepository) {
+        this.customerRepository = customerRepository;
+    }
 
     @RequestMapping("")
     public String unspecified() {
@@ -37,7 +45,7 @@ public class CustomerController {
     }
 
     @PostMapping("/form")
-    public String saveCustomer(@Valid Customer customer, BindingResult result, Model model) {
+    public String saveCustomer(@Valid Customer customer, BindingResult result) {
         if (result.hasErrors()) {
             return "customers/form";
         }
@@ -63,7 +71,24 @@ public class CustomerController {
     }
 
     @GetMapping("/ranking")
-    public String ranking() {
+    public String ranking(Model model) {
+        Date dateForm = new Date();
+        model.addAttribute("mom", customerRepository.findAllForRankingByDate(dateForm));
+        return "/ranking/mom";
+    }
+
+    @PostMapping("/ranking")
+    public String rankingPast(@RequestParam String pastDate, Model model) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        Date checkDate = null;
+        try {
+            checkDate = dateFormat.parse(pastDate);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        if (checkDate == null) checkDate = new Date();
+        model.addAttribute("mom", customerRepository.findAllForRankingByDate(checkDate));
+        model.addAttribute("headerText", "Ranking stan na dzień " + pastDate);
         return "/ranking/mom";
     }
 

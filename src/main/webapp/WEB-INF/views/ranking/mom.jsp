@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 .
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
@@ -9,6 +10,17 @@
 <body style="background-color: lightsteelblue">
 <%@ include file="../jspf/nav.jspf" %>
 <p class="h1 text-center" style="font-family: 'Abril Fatface', cursive;">Milomierz</p>
+<div>
+    <form:form modelAttribute="dateForm" method="post">
+        <label for="pastDate">Wprowadź datę aby sprawdzić rankingna dany dzień</label>
+        <input type="date" id="pastDate" name="pastDate"/>
+        <input type="submit" value="Sprawdź">
+        <input type="button" value="Reset" onclick="location.href='/customers/ranking'"/>
+    </form:form>
+</div>
+<p>
+<h4><c:out value="${headerText}"/></h4>
+</p>
 <table class="table table-striped table-dark">
     <thead>
     <tr>
@@ -21,8 +33,8 @@
     <c:forEach items="${mom}" var="m" varStatus="stat">
         <tr>
             <th scope="row"><c:out value="${stat.count}"/></th>
-            <td><c:out value="${m[1]}"/> &nbsp; <c:out
-                    value="${m[2]}"/></td>
+            <td><a href="/customers/ranking/details?id=${m[0]}"><c:out value="${m[1]}"/> &nbsp; <c:out
+                    value="${m[2]}"/> </a></td>
             <td><c:out value="${m[3]}"/></td>
         </tr>
     </c:forEach>
