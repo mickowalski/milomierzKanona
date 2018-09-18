@@ -89,7 +89,7 @@ public class CustomerController {
         if (checkDate == null) checkDate = new Date();
         model.addAttribute("mom", customerRepository.findAllForRankingByDate(checkDate));
         model.addAttribute("headerText", "Ranking stan na dzień " + pastDate);
-        return "/ranking/mom";
+        return "/ranking/pastMom";
     }
 
     @GetMapping("ranking/details")
@@ -98,9 +98,26 @@ public class CustomerController {
 
         return "ranking/details";
     }
+//
+//    @PostMapping("ranking/status")
+//    public String rankingChangeStatus(@RequestParam(required = false) Boolean sms, @RequestParam(required = false) Boolean email) {
+//        List<Cruise> lastCruises = cruiseRepository.findAllArchive();
+//        List<Long> prevRankingPosition = customerRepository.findCustomerIdForRankingByDate(lastCruises.get(1).getEnd());
+//        List<Long> lastRankingPosition = customerRepository.findCustomerIdForRankingByDate(lastCruises.get(0).getEnd());
+//        for(Long id:prevRankingPosition){
+//            Customer customer = customerRepository.findOne(id);
+//            if(prevRankingPosition.indexOf(id)==lastRankingPosition.indexOf(id)){
+//                customer.setRankingChange(0);
+//            }
+//            if(prevRankingPosition.indexOf(id)>lastRankingPosition.indexOf(id)){
+//                customer.setRankingChange(1);
+//            }
+//            if(prevRankingPosition.indexOf(id)<lastRankingPosition.indexOf(id)){
+//                customer.setRankingChange(-1);
+//            }
+//            customerRepository.save(customer);
+//        }
+//        return "redirect:/customers/ranking";
+//    }
 
-    @ModelAttribute("mom")
-    public List<Object[]> details() {
-        return customerRepository.findAllForRanking();
-    }
 }

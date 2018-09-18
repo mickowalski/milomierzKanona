@@ -23,5 +23,4 @@ Umożliwia wyświetlenie rejsów poszczególnych uczestników wraz z szczegóła
 
 - wysyłanie powiadomień za pomocą emaila, SMSa gdy zmieni się pozycja w rankingu.
 - możliwość porównywania dwóch uczestników.
-- możliwość wyświetlenia rankingu w dowolnym dniu.
 - automatyczne generowanie umów, na podstawie danych w bazie.

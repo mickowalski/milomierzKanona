@@ -28,18 +28,19 @@
     </tr>
     </thead>
     <tbody>
-    <c:forEach items="${list}" var="d">
+    <c:forEach items="${list}" var="details">
         <tr>
-            <td><c:out value="${d.customer.fullName}"/></td>
-            <td><c:out value="${d.paid}"/> &nbsp; / &nbsp;<c:out value="${d.price}"/> PLN</td>
-            <td><c:out value="${count}"/> &nbsp; / &nbsp; <c:out value="${d.cruise.maxPpl}"/> Uczestników
+            <td><c:out value="${details.customer.fullName}"/></td>
+            <td><c:out value="${details.paid}"/> &nbsp; / &nbsp;<c:out value="${details.price}"/> PLN</td>
+            <td><c:out value="${count}"/> &nbsp; / &nbsp; <c:out value="${details.cruise.maxPpl}"/> Uczestników
             </td>
-            <td><c:out value="${d.miles}"/></td>
+            <td><c:out value="${details.miles}"/></td>
             <td>
                 <button class="btn btn-primary"
-                        onClick="location.href='/details/form?id=${d.id}&cruiseId=${cruise.id}'">Edytuj
+                        onClick="location.href='/details/form?id=${details.id}&cruiseId=${cruise.id}'">Edytuj
                 </button>
-                <button class="btn btn-primary" onclick="location.href='/details/confirmDelete?id=${d.id}'">
+                <button class="btn btn-primary"
+                        onclick="location.href='/details/confirmDelete?id=${details.id}&fullName=${details.customer.fullName}'">
                     Usuń
                 </button>
             </td>

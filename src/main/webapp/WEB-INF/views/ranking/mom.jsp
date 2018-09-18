@@ -27,15 +27,17 @@
         <th scope="col">Miejsce</th>
         <th scope="col">Imię i nazwisko</th>
         <th scope="col">Ilość mil</th>
+        <th scope="col"></th>
     </tr>
     </thead>
     <tbody>
-    <c:forEach items="${mom}" var="m" varStatus="stat">
+    <c:forEach items="${mom}" var="mom" varStatus="stat">
         <tr>
             <th scope="row"><c:out value="${stat.count}"/></th>
-            <td><a href="/customers/ranking/details?id=${m[0]}"><c:out value="${m[1]}"/> &nbsp; <c:out
-                    value="${m[2]}"/> </a></td>
-            <td><c:out value="${m[3]}"/></td>
+            <td><a href="/customers/ranking/details?id=${mom[0]}"><c:out value="${mom[1]}"/> &nbsp; <c:out
+                    value="${mom[2]}"/> </a></td>
+            <td><c:out value="${mom[4]}"/></td>
+            <td><c:out value="${mom[3]}"/></td>
         </tr>
     </c:forEach>
     </tbody>

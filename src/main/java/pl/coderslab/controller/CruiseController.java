@@ -6,8 +6,10 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import pl.coderslab.entity.Cruise;
+import pl.coderslab.entity.Customer;
 import pl.coderslab.entity.Details;
 import pl.coderslab.repository.CruiseRepository;
+import pl.coderslab.repository.CustomerRepository;
 import pl.coderslab.repository.DetailsRepository;
 
 import javax.validation.Valid;
@@ -23,6 +25,9 @@ public class CruiseController {
 
     @Autowired
     DetailsRepository detailsRepository;
+
+    @Autowired
+    CustomerRepository customerRepository;
 
     @RequestMapping("")
     public String unspecified() {
@@ -51,6 +56,26 @@ public class CruiseController {
         Cruise toArchive = cruiseRepository.findOne(id);
         toArchive.setArchive(true);
         cruiseRepository.save(toArchive);
+
+        List<Cruise> lastCruises = cruiseRepository.findAllArchive();
+        List<Long> prevRankingPosition = customerRepository.findCustomerIdForRankingByDate(lastCruises.get(1).getEnd());
+        List<Long> lastRankingPosition = customerRepository.findCustomerIdForRankingByDate(lastCruises.get(0).getEnd());
+
+        if (!prevRankingPosition.isEmpty()) {
+            for (Long customerId : prevRankingPosition) {
+                Customer customer = customerRepository.findOne(customerId);
+                if (prevRankingPosition.indexOf(customerId) == lastRankingPosition.indexOf(customerId)) {
+                    customer.setRankingChange(0);
+                }
+                if (prevRankingPosition.indexOf(customerId) > lastRankingPosition.indexOf(customerId)) {
+                    customer.setRankingChange(1);
+                }
+                if (prevRankingPosition.indexOf(customerId) < lastRankingPosition.indexOf(customerId)) {
+                    customer.setRankingChange(-1);
+                }
+                customerRepository.save(customer);
+            }
+        }
         return "redirect: /cruises/archive";
     }
 
