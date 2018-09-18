@@ -11,7 +11,7 @@
 <%@ include file="../jspf/nav.jspf" %>
 <p class="h1 text-center" style="font-family: 'Abril Fatface', cursive;">Milomierz</p>
 <div>
-    <form:form name="dateForm" method="post">
+    <form:form modelAttribute="dateForm" method="post">
         <label for="pastDate">Wprowadź datę aby sprawdzić rankingna dany dzień</label>
         <input type="date" id="pastDate" name="pastDate"/>
         <input type="submit" value="Sprawdź">
@@ -27,7 +27,6 @@
         <th scope="col">Miejsce</th>
         <th scope="col">Imię i nazwisko</th>
         <th scope="col">Ilość mil</th>
-        <th scope="col"></th>
     </tr>
     </thead>
     <tbody>
@@ -36,7 +35,6 @@
             <th scope="row"><c:out value="${stat.count}"/></th>
             <td><a href="/customers/ranking/details?id=${mom[0]}"><c:out value="${mom[1]}"/> &nbsp; <c:out
                     value="${mom[2]}"/> </a></td>
-            <td><c:out value="${mom[4]}"/></td>
             <td><c:out value="${mom[3]}"/></td>
         </tr>
     </c:forEach>
