@@ -5,7 +5,7 @@
     <title>Details of </title>
     <%@ include file="../jspf/head_config.jspf" %>
 </head>
-<body style="background-color: lightsteelblue">
+<body>
 <%@ include file="../jspf/nav.jspf" %>
 <table class="table table-striped table-dark">
     <thead>

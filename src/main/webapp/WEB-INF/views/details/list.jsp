@@ -13,7 +13,7 @@
     <title>Details</title>
     <%@ include file="../jspf/head_config.jspf" %>
 </head>
-<body style="background-color: lightsteelblue">
+<body>
 <%@ include file="../jspf/nav.jspf" %>
 <p class="h1 text-center" style="font-family: 'Abril Fatface', cursive;">Rejs: <c:out
         value="${cruise.name}"/></p>

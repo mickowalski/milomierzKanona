@@ -1,15 +1,16 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-.
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
     <title>Mile-o-meter</title>
     <%@ include file="../jspf/head_config.jspf" %>
+
 </head>
-<body style="background-color: lightsteelblue">
+<body>
 <%@ include file="../jspf/nav.jspf" %>
-<p class="h1 text-center" style="font-family: 'Abril Fatface', cursive;">Milomierz</p>
+<p style="font-family: 'Abril Fatface', cursive;">Milomierz</p>
 <div>
     <form:form name="dateForm" method="post">
         <label for="pastDate">Wprowadź datę aby sprawdzić rankingna dany dzień</label>

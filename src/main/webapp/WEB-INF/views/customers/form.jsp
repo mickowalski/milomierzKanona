@@ -13,7 +13,7 @@
     <%@ include file="../jspf/head_config.jspf" %>
     <title>Customer form</title>
 </head>
-<body style="background-color: lightsteelblue">
+<body>
 
 <%@ include file="../jspf/nav.jspf" %>
 <div class="d-inline-flex p-2 bd-highlight">
