@@ -9,7 +9,7 @@
 </head>
 <body>
 <%@ include file="../jspf/nav.jspf" %>
-<p class="h1 text-center" style="font-family: 'Abril Fatface', cursive;">Milomierz</p>
+<p class="h1 text-center" style="font-family: 'Tajawal', sans-serif;">Milomierz</p>
 <div>
     <form:form modelAttribute="dateForm" method="post">
         <label for="pastDate">Wprowadź datę aby sprawdzić rankingna dany dzień</label>

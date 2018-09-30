@@ -15,7 +15,7 @@
 </head>
 <body>
 <%@ include file="../jspf/nav.jspf" %>
-<p class="h1 text-center" style="font-family: 'Abril Fatface', cursive;">Rejs: <c:out
+<p class="h1 text-center" style="font-family: 'Tajawal', sans-serif;">Rejs: <c:out
         value="${cruise.name}"/></p>
 <table class="table table-striped table-dark">
     <thead>

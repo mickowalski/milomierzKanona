@@ -98,26 +98,5 @@ public class CustomerController {
 
         return "ranking/details";
     }
-//
-//    @PostMapping("ranking/status")
-//    public String rankingChangeStatus(@RequestParam(required = false) Boolean sms, @RequestParam(required = false) Boolean email) {
-//        List<Cruise> lastCruises = cruiseRepository.findAllArchive();
-//        List<Long> prevRankingPosition = customerRepository.findCustomerIdForRankingByDate(lastCruises.get(1).getEnd());
-//        List<Long> lastRankingPosition = customerRepository.findCustomerIdForRankingByDate(lastCruises.get(0).getEnd());
-//        for(Long id:prevRankingPosition){
-//            Customer customer = customerRepository.findOne(id);
-//            if(prevRankingPosition.indexOf(id)==lastRankingPosition.indexOf(id)){
-//                customer.setRankingChange(0);
-//            }
-//            if(prevRankingPosition.indexOf(id)>lastRankingPosition.indexOf(id)){
-//                customer.setRankingChange(1);
-//            }
-//            if(prevRankingPosition.indexOf(id)<lastRankingPosition.indexOf(id)){
-//                customer.setRankingChange(-1);
-//            }
-//            customerRepository.save(customer);
-//        }
-//        return "redirect:/customers/ranking";
-//    }
 
 }

@@ -20,46 +20,51 @@
     <form:form modelAttribute="customer" method="post">
         <form:hidden path="id"/>
     <div class="form-group">
-        <label for="exampleInputPassword1">Imię</label>
-        <form:input path="firstName" class="form-control" id="exampleInputPassword1" placeholder="Imię"/>
-        <small id="emailHelp" class="form-text text-danger"><form:errors path="firstName"/></small>
+        <label>Imię</label>
+        <form:input path="firstName" cssClass="form-control" placeholder="Imię"/>
+        <small class="form-text text-danger"><form:errors path="firstName"/></small>
     </div>
     <div class="form-group">
-        <label for="exampleInputEmail1">Nazwisko</label>
-        <form:input path="lastName" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                    placeholder="Nazwisko"/>
-        <small id="emailHelp" class="form-text text-danger"><form:errors path="lastName"/></small>
+        <label>Nazwisko</label>
+        <form:input path="lastName" cssClass="form-control" placeholder="Nazwisko"/>
+        <small class="form-text text-danger"><form:errors path="lastName"/></small>
     </div>
     <div class="form-group">
-        <label for="exampleInputPassword1">Ulica</label>
-        <form:input path="street" class="form-control" id="exampleInputPassword1" placeholder="Ulica"/>
+        <label>Ulica</label>
+        <form:input path="street" cssClass="form-control" placeholder="Ulica"/>
     </div>
     <div class="form-group">
-        <label for="exampleInputPassword1">Kod pocztowy</label>
-        <form:input path="zipCode" cssClass="form-control" id="exampleInputPassword1" placeholder="Kod pocztowy"/>
+        <label>Kod pocztowy</label>
+        <form:input path="zipCode" cssClass="form-control" placeholder="Kod pocztowy"/>
     </div>
     <div class="form-group">
-        <label for="exampleInputEmail1">Miejscowość</label>
-        <form:input path="city" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                    placeholder="Miejscowość"/>
+        <label>Miejscowość</label>
+        <form:input path="city" cssClass="form-control" placeholder="Miejscowość"/>
     </div>
     <div class="form-group">
-        <label for="exampleInputPassword1">Telefon</label>
-        <form:input path="phone" class="form-control" id="exampleInputPassword1" placeholder="Telefon"/>
+        <label>Telefon</label>
+        <form:input path="phone" cssClass="form-control" placeholder="Telefon"/>
     </div>
     <div class="form-group">
-        <label for="exampleInputPassword1"> Emial</label>
-        <form:input path="email" type="email" class="form-control" id="exampleInputPassword1" placeholder="Email"/>
-        <small id="emailHelp" class="form-text text-danger"><form:errors path="email"/></small>
+        <label> Emial</label>
+        <form:input path="email" type="email" cssClass="form-control" placeholder="Email"/>
+        <small class="form-text text-danger"><form:errors path="email"/></small>
     </div>
     <div class="form-group">
-        <label for="exampleInputEmail1">Pesel</label>
-        <form:input path="pesel" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                    placeholder="Pesel"/>
+        <label>Pesel</label>
+        <form:input path="pesel" cssClass="form-control" placeholder="Pesel"/>
     </div>
     <div class="form-group">
-        <label for="exampleInputPassword1">Rozmiar koszulki</label>
-        <form:input path="shirt" class="form-control" id="exampleInputPassword1" placeholder="Rozmiar koszulki"/>
+        <label>Rozmiar koszulki</label>
+        <form:input path="shirt" cssClass="form-control" placeholder="Rozmiar koszulki"/>
+    </div>
+    <div class="form-group">
+        <label>Zogada na otrzymywanie Email</label>
+        <form:checkbox path="mailingList" cssClass="form-check-label"/>
+    </div>
+    <div class="form-group">
+        <label>Zgoda na otrzzymywanie SMS</label>
+        <form:checkbox path="smsAgreement" cssClass="form-check-label"/>
     </div>
     <button type="submit" class="btn btn-primary">Zatwierdź</button>
     </form:form>
