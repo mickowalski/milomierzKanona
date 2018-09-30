@@ -6,7 +6,7 @@
     <title>Cruise details</title>
     <%@ include file="../jspf/head_config.jspf" %>
 </head>
-<body style="background-color: lightsteelblue">
+<body>
 <%@ include file="../jspf/nav.jspf" %>
 <div class="d-inline-flex p-2 bd-highlight">
     <form:form modelAttribute="details" method="post">
@@ -14,24 +14,23 @@
         <form:hidden path="curPpl"/>
         <form:hidden path="cruise.id"/>
     <div class="form-group">
-        <label for="exampleInputPassword1">Ilość mil</label>
-        <form:input path="miles" class="form-control" id="exampleInputPassword1" placeholder="Dystans"/>
-        <small id="emailHelp" class="form-text text-danger"><form:errors path="miles"/></small>
+        <label>Ilość mil</label>
+        <form:input path="miles" cssClass="form-control" placeholder="Dystans"/>
+        <small class="form-text text-danger"><form:errors path="miles"/></small>
     </div>
     <div class="form-group">
-        <label for="exampleInputEmail1">Cena rejsu</label>
-        <form:input path="price" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                    placeholder="Cena rejsu"/>
-        <small id="emailHelp" class="form-text text-danger"><form:errors path="price"/></small>
+        <label>Cena rejsu</label>
+        <form:input path="price" cssClass="form-control" placeholder="Cena rejsu"/>
+        <small class="form-text text-danger"><form:errors path="price"/></small>
     </div>
     <div class="form-group">
-        <label for="exampleInputPassword1">Zapłacono</label>
-        <form:input path="paid" class="form-control" id="exampleInputPassword1" placeholder="Zapłacono"/>
-        <small id="emailHelp" class="form-text text-danger"><form:errors path="paid"/></small>
+        <label>Zapłacono</label>
+        <form:input path="paid" cssClass="form-control" placeholder="Zapłacono"/>
+        <small class="form-text text-danger"><form:errors path="paid"/></small>
     </div>
     <div class="form-group">
-        <label for="exampleInputEmail1">Uczestnik</label>
-        <form:select items="${clients}" path="customer.id" itemValue="id" itemLabel="fullName" class="form-control"/>
+        <label>Uczestnik</label>
+        <form:select items="${clients}" path="customer.id" itemValue="id" itemLabel="fullName" cssClass="form-control"/>
     </div>
     <button type="submit" class="btn btn-primary">Zatwierdź</button>
     </form:form>

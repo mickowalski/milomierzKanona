@@ -5,9 +5,18 @@
     <title>Archive</title>
     <%@ include file="../jspf/head_config.jspf" %>
 </head>
-<body style="background-color: lightsteelblue">
+<body>
         <%@ include file="../jspf/nav.jspf" %>
         <p class="h1 text-center" style="font-family: 'Tajawal', sans-serif;">Archiwum</p>
+        <div>
+            <form action="/customers/ranking/status" method="post">
+                <label> SMS</label>
+                <input type="checkbox" nname="sms"/>
+                <label>email</label>
+                <input type="checkbox" name="email"/>
+                <input class="btn btn-primary" type="submit">Wyślij wiadomość</input>
+            </form>
+        </div>
         <table class="table table-striped table-dark">
             <thead>
             <tr>
@@ -38,7 +47,7 @@
                             Usuń
                         </button>
                         <button class="btn btn-primary"
-                                onClick="location.href='/details/list?cruiseId=${cruise.id}'">Szczegóły
+                                onClick="location.href='/details?cruiseId=${cruise.id}'">Szczegóły
                         </button>
                     </td>
                 </tr>

@@ -32,14 +32,16 @@ public class Customer {
     private String phone;
     private String shirt;
     private Boolean mailingList;
-    private Boolean phoneAgreement;
+    private Boolean smsAgreement;
+    private Integer rankingChange;
 
     @OneToMany(mappedBy = "customer")
     private List<Details> details;
 
     public Customer() {
-        phoneAgreement = false;
+        smsAgreement = false;
         mailingList = false;
+        rankingChange = 0;
     }
 
     public String getFullName() {
@@ -143,10 +145,26 @@ public class Customer {
     }
 
     public Boolean getPhoneagree() {
-        return phoneAgreement;
+        return smsAgreement;
     }
 
     public void setPhoneagree(Boolean phoneagree) {
-        this.phoneAgreement = phoneagree;
+        this.smsAgreement = phoneagree;
+    }
+
+    public Boolean getSmsAgreement() {
+        return smsAgreement;
+    }
+
+    public void setSmsAgreement(Boolean phoneAgreement) {
+        this.smsAgreement = phoneAgreement;
+    }
+
+    public Integer getRankingChange() {
+        return rankingChange;
+    }
+
+    public void setRankingChange(Integer rankingChange) {
+        this.rankingChange = rankingChange;
     }
 }

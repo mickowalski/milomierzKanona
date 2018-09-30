@@ -13,6 +13,7 @@ import pl.coderslab.repository.CustomerRepository;
 import pl.coderslab.repository.DetailsRepository;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -71,6 +72,7 @@ public class DetailsController {
         Long crId = details.getCruise().getId();
         details.setCruise(null);
         details.setCustomer(null);
+        List<Details> list = new ArrayList();
         detailsRepository.delete(id);
         return "redirect:/details?cruiseId=" + crId;
     }

@@ -8,7 +8,7 @@
 </head  style="background-color: lightsteelblue">
 <body>
 <%@ include file="../jspf/nav.jspf" %>
-<h5>Czy na pewno chcesz usunąć użytkownika: ${param.firstName} ${param.lastName}?</h5>
+<h5>Czy na pewno chcesz usunąć użytkownika &nbsp; <c:out value="${param.fullName}"/>?</h5>
 <button onClick="location.href='delete?id=${param.id}'">OK</button>
-<button onClick="location.href='list'">Cancel</button>
+<button onClick="location.href='/details'">Cancel</button>
 </html>
