@@ -1,6 +1,8 @@
 package pl.coderslab.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.MailSender;
+import org.springframework.mail.SimpleMailMessage;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -13,6 +15,7 @@ import pl.coderslab.repository.CustomerRepository;
 import pl.coderslab.repository.DetailsRepository;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -28,6 +31,12 @@ public class CruiseController {
 
     @Autowired
     CustomerRepository customerRepository;
+
+    @Autowired
+    private MailSender mailSender;
+
+    @Autowired
+    private SimpleMailMessage mailMessage;
 
     @RequestMapping("")
     public String unspecified() {
@@ -58,19 +67,24 @@ public class CruiseController {
         cruiseRepository.save(toArchive);
 
         List<Cruise> lastCruises = cruiseRepository.findAllArchive();
-        List<Long> prevRankingPosition = customerRepository.findCustomerIdForRankingByDate(lastCruises.get(1).getEnd());
-        List<Long> lastRankingPosition = customerRepository.findCustomerIdForRankingByDate(lastCruises.get(0).getEnd());
-
-        if (!prevRankingPosition.isEmpty()) {
+        List<Long> prevRankingPosition = new ArrayList<>();
+        List<Long> lastRankingPosition = new ArrayList<>();
+        if (lastCruises.size() >= 2) {
+            prevRankingPosition = customerRepository.findCustomerIdForRankingByDate(lastCruises.get(1).getEnd());
+            lastRankingPosition = customerRepository.findCustomerIdForRankingByDate(lastCruises.get(0).getEnd());
+        }
+        if (!prevRankingPosition.isEmpty() && !lastRankingPosition.isEmpty()) {
             for (Long customerId : prevRankingPosition) {
                 Customer customer = customerRepository.findOne(customerId);
-                if (prevRankingPosition.indexOf(customerId) == lastRankingPosition.indexOf(customerId)) {
+                customer.setPrvRanking(prevRankingPosition.indexOf(customerId) + 1);
+                customer.setCurRanking(lastRankingPosition.indexOf(customerId) + 1);
+                if (customer.getPrvRanking() == customer.getCurRanking()) {
                     customer.setRankingChange(0);
                 }
-                if (prevRankingPosition.indexOf(customerId) > lastRankingPosition.indexOf(customerId)) {
+                if (customer.getPrvRanking() > customer.getCurRanking()) {
                     customer.setRankingChange(1);
                 }
-                if (prevRankingPosition.indexOf(customerId) < lastRankingPosition.indexOf(customerId)) {
+                if (customer.getPrvRanking() < customer.getCurRanking()) {
                     customer.setRankingChange(-1);
                 }
                 customerRepository.save(customer);
@@ -95,6 +109,30 @@ public class CruiseController {
         detailsRepository.delete(details);
         cruiseRepository.delete(id);
         return "redirect:/cruises";
+    }
+
+    @GetMapping("/sendEmail")
+    public String sendEmail() {
+
+        List<Customer> mailingList = customerRepository.findAllByMailingListIsTrueAndEmailIsNotNullAndRankingChangeIsNot(0);
+        String rankingCheck = "Spadek";
+        SimpleMailMessage msg = new SimpleMailMessage(mailMessage);
+        msg.setSubject("Milomierz Kanona");
+        for (Customer customer : mailingList) {
+            if (customer.getRankingChange() == 1) {
+                rankingCheck = "Wzrost";
+            } else {
+                rankingCheck = "spadek";
+            }
+            msg.setTo(customer.getEmail());
+            msg.setText("Cześć Milomierzowcu." +
+                    "\n\n Twoja aktualna pozycja w Milomierzu Kanona to " + customer.getCurRanking() + " miejsce." +
+                    rankingCheck + " z " + customer.getPrvRanking() + "miejsca. " +
+                    "Zapisuj się na rejsy. Płyniemy dalej. " +
+                    "\n\n Pozdrowienia Kanon");
+            mailSender.send(msg);
+        }
+        return "redirect:/cruises/archive";
     }
 
     @ModelAttribute("cruises")

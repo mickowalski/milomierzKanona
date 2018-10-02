@@ -4,6 +4,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.mail.MailSender;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalEntityManagerFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
@@ -19,6 +22,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import javax.persistence.EntityManagerFactory;
 import javax.validation.Validator;
 import java.util.Locale;
+import java.util.Properties;
 
 @Configuration
 @EnableWebMvc
@@ -26,6 +30,35 @@ import java.util.Locale;
 @EnableTransactionManagement
 @EnableJpaRepositories(basePackages = "pl.coderslab.repository")
 public class AppConfig extends WebMvcConfigurerAdapter {
+
+    private static final String SENDER_EMAIL = "milomierz.kanona@gmail.com";
+
+    @Bean
+    public MailSender mailSender() {
+        JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
+
+        Properties props = new Properties();
+        props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.starttls.enable", "true");
+        mailSender.setJavaMailProperties(props);
+        mailSender.setUsername(SENDER_EMAIL);
+        mailSender.setPassword("");
+        mailSender.setHost("smtp.gmail.com");
+        mailSender.setPort(587);
+        return mailSender;
+    }
+
+    @Bean
+    public SimpleMailMessage defaultMessage() {
+
+        SimpleMailMessage smm = new SimpleMailMessage();
+        smm.setTo("default@gmail.com");
+        smm.setFrom(SENDER_EMAIL);
+        smm.setSubject("Default subject");
+        smm.setText("Default text");
+
+        return smm;
+    }
 
     @Bean
     public LocalEntityManagerFactoryBean entityManagerFactory() {

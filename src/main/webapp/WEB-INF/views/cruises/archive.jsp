@@ -8,15 +8,9 @@
 <body>
         <%@ include file="../jspf/nav.jspf" %>
         <p class="h1 text-center" style="font-family: 'Tajawal', sans-serif;">Archiwum</p>
-        <div>
-            <form action="/customers/ranking/status" method="post">
-                <label> SMS</label>
-                <input type="checkbox" nname="sms"/>
-                <label>email</label>
-                <input type="checkbox" name="email"/>
-                <input class="btn btn-primary" type="submit">Wyślij wiadomość</input>
-            </form>
-        </div>
+        <button class="btn btn-primary" onsubmit="false" onclick="location.href='/cruises/sendEmail'">
+            Wyślij powiadomienie Email o zmianie statusu rankingu
+        </button>
         <table class="table table-striped table-dark">
             <thead>
             <tr>
