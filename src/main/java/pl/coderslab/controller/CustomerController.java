@@ -34,7 +34,7 @@ public class CustomerController {
 
     @ModelAttribute("customers")
     public List<Customer> getAllCustomers() {
-        return customerRepository.findAll();
+        return customerRepository.getAllByOrderByLastNameAsc();
     }
 
     @GetMapping("/form")

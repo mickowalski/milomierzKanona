@@ -34,6 +34,8 @@ public class Customer {
     private Boolean mailingList;
     private Boolean smsAgreement;
     private Integer rankingChange;
+    private Integer prvRanking;
+    private Integer curRanking;
 
     @OneToMany(mappedBy = "customer")
     private List<Details> details;
@@ -166,5 +168,21 @@ public class Customer {
 
     public void setRankingChange(Integer rankingChange) {
         this.rankingChange = rankingChange;
+    }
+
+    public Integer getPrvRanking() {
+        return prvRanking;
+    }
+
+    public void setPrvRanking(Integer prvRanking) {
+        this.prvRanking = prvRanking;
+    }
+
+    public Integer getCurRanking() {
+        return curRanking;
+    }
+
+    public void setCurRanking(Integer curRanking) {
+        this.curRanking = curRanking;
     }
 }
