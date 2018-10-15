@@ -9,7 +9,7 @@
 <body>
 
 <%@ include file="../jspf/nav.jspf" %>
-<p class="h1 text-center" style="font-family: 'Tajawal', sans-serif;">Klienci</p>
+<p class="h1 text-center" style="font-family: 'Tajawal', sans-serif;"><i class="icon ion-ios-people"></i>Klienci</p>
 <table class="table table-striped table-dark">
     <thead>
     <tr>

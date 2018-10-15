@@ -7,14 +7,23 @@
 </head>
 <body>
         <%@ include file="../jspf/nav.jspf" %>
-        <p class="h1 text-center" style="font-family: 'Tajawal', sans-serif;">Archiwum</p>
-        <button class="btn btn-primary" onsubmit="false" onclick="location.href='/cruises/sendEmail'">
-            Wyślij powiadomienie Email o zmianie statusu rankingu
-        </button>
+        <p class="h1 text-center" style="font-family: 'Tajawal', sans-serif;"><i class="icon ion-ios-archive"></i>Archiwum
+        </p>
+        <div>
+            <form action="/customers/ranking/status" method="post">
+                <!--
+                <label> SMS</label>
+                <input type="checkbox" name="sms"/>
+                <label>email</label>
+                <input type="checkbox" name="email"/>
+                -->
+                <input class="btn btn-primary btn-archive" type="submit" value="Wyślij wiadomość">
+            </form>
+        </div>
         <table class="table table-striped table-dark">
             <thead>
             <tr>
-                <th scope="col">#</th>
+                <th scope="col"></th>
                 <th scope="col">Nazwa rejsu</th>
                 <th scope="col">Data rozpoczęcia</th>
                 <th scope="col">Data zakończenia</th>

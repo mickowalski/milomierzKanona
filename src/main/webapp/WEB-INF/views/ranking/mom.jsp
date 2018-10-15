@@ -10,13 +10,16 @@
 </head>
 <body>
 <%@ include file="../jspf/nav.jspf" %>
-<p class="h1 text-center" style="font-family: 'Tajawal', sans-serif;">Milomierz</p>
+<p class="h1 text-center" style="font-family: 'Tajawal', sans-serif;"><i class="icon ion-ios-speedometer"></i>Milomierz
+</p>
 <div>
     <form:form name="dateForm" method="post">
-        <label for="pastDate">Wprowadź datę aby sprawdzić rankingna dany dzień</label>
+        <label for="pastDate">Wprowadź datę aby sprawdzić ranking na dany dzień</label>
+        <div class="introduction-data">
         <input type="date" id="pastDate" name="pastDate"/>
         <input type="submit" value="Sprawdź">
         <input type="button" value="Reset" onclick="location.href='/customers/ranking'"/>
+        </div>
     </form:form>
 </div>
 <p>
@@ -31,7 +34,8 @@
         <th scope="col"></th>
     </tr>
     </thead>
-    <tbody>
+    <tbody id="" customers
+    ">
     <c:forEach items="${mom}" var="mom" varStatus="stat">
         <tr>
             <th scope="row"><c:out value="${stat.count}"/></th>
