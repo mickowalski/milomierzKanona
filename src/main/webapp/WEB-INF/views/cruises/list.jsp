@@ -14,11 +14,12 @@
 </head>
 <body>
         <%@ include file="../jspf/nav.jspf" %>
-        <p class="h1 text-center" style="font-family: 'Abril Fatface', cursive;">Rejsy</p>
+        <p class="h1 text-center" style="font-family: 'Abril Fatface', cursive;"><i class="icon ion-ios-boat"></i>Rejsy
+        </p>
         <table class="table table-striped table-dark">
             <thead>
             <tr>
-                <th scope="col">#</th>
+                <th scope="col"></th>
                 <th scope="col">Nazwa rejsu</th>
                 <th scope="col">Data rozpoczęcia</th>
                 <th scope="col">Data zakończenia</th>
