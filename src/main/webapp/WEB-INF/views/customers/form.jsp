@@ -17,7 +17,7 @@
 
 <%@ include file="../jspf/nav.jspf" %>
 <div class="d-inline-flex p-2 bd-highlight">
-    <form:form modelAttribute="customer" method="post">
+    <form:form modelAttribute="customer" method="post" class="form-general">
         <form:hidden path="id"/>
     <div class="form-group">
         <label>Imię</label>

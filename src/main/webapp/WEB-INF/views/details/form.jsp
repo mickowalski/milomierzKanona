@@ -9,7 +9,7 @@
 <body>
 <%@ include file="../jspf/nav.jspf" %>
 <div class="d-inline-flex p-2 bd-highlight">
-    <form:form modelAttribute="details" method="post">
+    <form:form modelAttribute="details" method="post" class="form-general">
         <form:hidden path="id"/>
         <form:hidden path="curPpl"/>
         <form:hidden path="cruise.id"/>

@@ -8,9 +8,9 @@
 </head>
 <body>
         <%@ include file="../jspf/nav.jspf" %>
-        <p class="h1 text-center" style="font-family: 'Abril Fatface', cursive;">Czy napewno chcesz usunąć
-            rejs ${param.name}?</p>
-        <button onClick="location.href='delete?id=${param.id}'">OK</button>
-        <button onClick="location.href='list'">Cancel</button>
+        <p class="h1 text-center delete-trip" style="font-family: 'Abril Fatface', cursive;">Czy na pewno chcesz usunąć
+            rejs <span class="cruise-name">${param.name}?</span></p>
+        <button class="delete-trip-btn" onClick="location.href='delete?id=${param.id}'">OK</button>
+        <button class="delete-trip-btn" onClick="location.href='list'">Cancel</button>
 </body>
 </html>
