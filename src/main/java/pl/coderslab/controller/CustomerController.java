@@ -46,15 +46,15 @@ public class CustomerController {
 
     @PostMapping("/form")
     public String saveCustomer(@Valid Customer customer, BindingResult result) {
-        if (result.hasErrors()) {
-            return "customers/form";
-        }
         Customer exisitingCustomer = customerRepository.findFirstByEmail(customer.getEmail());
         if (exisitingCustomer != null && customer.getId() == null) {
             FieldError error = new FieldError("customer", "email", "Email musi być unikalny");
             result.addError(error);
+        }
+        if (result.hasErrors()) {
             return "customers/form";
         }
+
         customerRepository.save(customer);
         return "redirect:/customers";
     }
@@ -88,15 +88,14 @@ public class CustomerController {
         }
         if (checkDate == null) checkDate = new Date();
         model.addAttribute("mom", customerRepository.findAllForRankingByDate(checkDate));
-        model.addAttribute("headerText", "Ranking stan na dzień " + pastDate);
+        model.addAttribute("headerText", "Ranking stan na " + pastDate);
         return "/ranking/pastMom";
     }
 
+    @ResponseBody
     @GetMapping("ranking/details")
-    public String rankingDetails(@RequestParam Long id, Model model) {
-        model.addAttribute("details", customerRepository.CruiseDetailsByUser(id));
-
-        return "ranking/details";
+    public List<Object[]> rankingDetails(@RequestParam Long id, Model model) {
+        return customerRepository.CruiseDetailsByUser(id);
     }
 
 }

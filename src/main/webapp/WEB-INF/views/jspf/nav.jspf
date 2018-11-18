@@ -1,3 +1,4 @@
+<%@ page contentType="text/html;charset=UTF-8" %>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" href="#">Milomierz Kanona</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
@@ -20,8 +21,18 @@
                 <a class="nav-link" href="/cruises/archive">Archiwum</a>
             </li>
         </ul>
-        <button class="btn btn-outline-primary my-2 my-sm-0" onClick="location.href='/user/logout'">Wyloguj
-        </button>
+        <%--<button class="my-2 my-sm-0" onClick="location.href='/user/logout'">Wyloguj--%>
+        <%--</button>--%>
 
+
+        <a class="nav-link dropdown-toggle " href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+           aria-haspopup="true" aria-expanded="false">
+            <c:out value="Witaj, ${logged.login}"/>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" href="/user/edit?id=${logged.id}">Edydtuj profil</a>
+            <a class="dropdown-item" href="/user/add">Dodaj użytkownika</a>
+            <a class="dropdown-item" href="/user/logout">Wyloguj</a>
+        </div>
     </div>
 </nav>

@@ -4989,6 +4989,15 @@ input[type="button"].btn-block {
     text-decoration: underline;
 }
 
+http:
+
+/
+/
+localhost:
+
+8080
+/customers/ ranking
+
 .breadcrumb-item + .breadcrumb-item:hover::before {
     text-decoration: none;
 }
@@ -5646,6 +5655,8 @@ input[type="button"].btn-block {
     font-size: 1.5rem;
     font-weight: 700;
     line-height: 1;
+    http: / /
+    localhost: 8080 /customers/ ranking
     color: #000;
     text-shadow: 0 1px 0 #fff;
     opacity: .5;

@@ -21,7 +21,7 @@ public class User {
     private String login;
     @NotBlank
     @Email(message = "podaj poprawny email")
-    @Column(nullable = false)
+    @Column(unique = true, nullable = false)
     private String email;
     @Size(min = 6, message = "Hasło musi mieć co najmniej {min} znaków")
     @Column(nullable = false)

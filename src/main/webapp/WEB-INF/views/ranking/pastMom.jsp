@@ -1,6 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-.
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
@@ -8,7 +8,14 @@
     <%@ include file="../jspf/head_config.jspf" %>
 </head>
 <body>
-<%@ include file="../jspf/pastnav.jsp" %>
+<c:choose>
+    <c:when test="${logged != null}">
+        <%@include file="../jspf/pastnav.jspf" %>
+    </c:when>
+    <c:otherwise>
+        <%@include file="../jspf/empty_nav.jspf" %>
+    </c:otherwise>
+</c:choose>
 <p class="h1 text-center" style="font-family: 'Tajawal', sans-serif;"><i class="icon ion-ios-speedometer"></i>Milomierz
 </p>
 <div>
@@ -38,7 +45,7 @@
             <th scope="row"><c:out value="${stat.count}"/></th>
             <td><a href="/customers/ranking/details?id=${mom[0]}"><c:out value="${mom[1]}"/> &nbsp; <c:out
                     value="${mom[2]}"/> </a></td>
-            <td><c:out value="${mom[3]}"/></td>
+            <td><c:out value="${mom[4]}"/></td>
         </tr>
     </c:forEach>
     </tbody>

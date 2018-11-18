@@ -6,23 +6,16 @@
     <%@ include file="../jspf/head_config.jspf" %>
 </head>
 <body>
-<%@ include file="../jspf/nav.jspf" %>
-<table class="table table-striped table-dark">
-    <thead>
-    <tr>
-        <th scope="col">Rejs</th>
-        <th scope="col">Rejs</th>
-    </tr>
-    </thead>
-    <tbody>
-    <c:forEach items="${details}" var="var" varStatus="stat">
-        <tr>
-
-            <td><c:out value="${var[3]}"/></td>
-        </tr>
-    </c:forEach>
-    </tbody>
-</table>
+<div class="container">
+    <div class="row align-items-start">
+        <c:forEach items="${details}" var="detail">
+        <div class="col">
+            <c:out value="${detail[1]}"/>
+        </div>
+        </c:forEach>
+        <div class="col">
+        </div>
 <%@ include file="../jspf/main_js.jspf" %>
 </body>
 </html>
+<%--       --%>

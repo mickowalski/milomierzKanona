@@ -6,10 +6,16 @@
 <head>
     <title>Mile-o-meter</title>
     <%@ include file="../jspf/head_config.jspf" %>
-
 </head>
 <body>
-<%@ include file="../jspf/nav.jspf" %>
+<c:choose>
+    <c:when test="${logged != null}">
+        <%@include file="../jspf/nav.jspf" %>
+    </c:when>
+    <c:otherwise>
+        <%@include file="../jspf/empty_nav.jspf" %>
+    </c:otherwise>
+</c:choose>
 <p class="h1 text-center" style="font-family: 'Tajawal', sans-serif;"><i class="icon ion-ios-speedometer"></i>Milomierz
 </p>
 <div>
@@ -34,13 +40,11 @@
         <th scope="col"></th>
     </tr>
     </thead>
-    <tbody id="" customers
-    ">
+    <tbody id="customers">
     <c:forEach items="${mom}" var="mom" varStatus="stat">
         <tr>
             <th scope="row"><c:out value="${stat.count}"/></th>
-            <td><a href="/customers/ranking/details?id=${mom[0]}"><c:out value="${mom[1]}"/> &nbsp; <c:out
-                    value="${mom[2]}"/> </a></td>
+            <td><c:out value="${mom[1]}"/> &nbsp; <c:out value="${mom[2]}"/></td>
             <td><c:out value="${mom[4]}"/></td>
             <td><c:out value="${mom[3]}"/></td>
         </tr>
